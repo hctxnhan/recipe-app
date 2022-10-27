@@ -1,0 +1,337 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,600;1,400&family=Roboto:wght@400;500&display=swap');
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+:root {
+  --br-small: 10px;
+}
+
+body {
+  /* font-family: 'Lora', serif; */
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+  background-color: rgb(232, 232, 232);
+  padding: 2rem;
+}
+
+.favorite {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.recipes {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+
+  justify-content: space-between;
+}
+
+.recipe {
+  width: 270px;
+  background-color: white;
+  border-radius: var(--br-small);
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+}
+
+.recipe__image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.recipe__info {
+  padding: 2rem 4rem;
+}
+
+.recipe__additional {
+  display: flex;
+  gap: 1rem;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  color: rgb(165, 165, 165);
+  font-weight: 500;
+}
+
+.recipe__name {
+  font-size: 2.2rem;
+  font-family: 'Lora', serif;
+}
+
+.recipe__heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.recipe__heart .recipe__heart-marked {
+  display: none;
+}
+
+.recipe__heart .recipe__heart-like {
+  display: block;
+}
+
+.recipe__heart--saved .recipe__heart-marked {
+  display: block;
+}
+
+.recipe__heart--saved .recipe__heart-like {
+  display: none;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 30px;
+}
+
+.search-bar input {
+  border: none;
+  width: 400px;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: var(--br-small);
+}
+
+.search-bar input:focus {
+  box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  outline: none;
+}
+
+.search-button {
+  height: 100%;
+  cursor: pointer;
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+}
+
+.favorite {
+  z-index: 10;
+}
+
+.favorite-list {
+  background-color: white;
+  padding: 1rem;
+  width: 400px;
+  position: absolute;
+  right: 50%;
+  top: 200%;
+  border-radius: var(--br-small);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+
+  min-height: 50px;
+
+  height: 500px;
+  overflow: scroll;
+
+  display: none;
+}
+
+.favorite-list--show {
+  display: block;
+}
+
+.favorite__image img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.favorite__name {
+  font-family: 'Lora', serif;
+  font-size: 1.6rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  flex-grow: 1;
+}
+
+.favorite-recipe {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.favorite-recipe:hover {
+  background-color: rgb(234, 234, 234);
+  border-radius: var(--br-small);
+}
+
+#open-fav {
+  visibility: hidden;
+  display: none;
+}
+
+.heart-icon {
+  cursor: pointer;
+  height: 32px;
+}
+
+.like-input {
+  display: none;
+  visibility: hidden;
+}
+
+.remove-button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+
+.detail-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  display: none;
+}
+
+.detail {
+  width: 80vw;
+  height: 80vh;
+  margin: auto;
+  background-color: white;
+  border-radius: var(--br-small);
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 19px -5px rgba(0, 0, 0, 0.2);
+}
+
+.close-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr 380px;
+  grid-template-rows: 250px 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    'Image Image Recipe'
+    'Detail Detail Recipe'
+    'Detail Detail Recipe';
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.detail__image {
+  grid-area: Image;
+}
+
+.detail__image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.detail__info {
+  grid-area: Detail;
+  padding: 4rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.detail__name {
+  font-size: 5.4rem;
+  font-family: 'Lora', serif;
+  margin-bottom: 20px;
+}
+
+.detail__tutorial {
+  font-size: 2rem;
+}
+
+.detail__recipe {
+  grid-area: Recipe;
+  padding: 2rem;
+  background-color: rgb(47, 47, 47);
+  color: white;
+  overflow-y: scroll;
+}
+
+.detail__recipe-title {
+  font-family: 'Lora', serif;
+  font-size: 4rem;
+  margin-bottom: 3rem;
+}
+
+.detail__list {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+.fa-xmark {
+  color: white;
+}
+
+.close-button:hover .fa-xmark {
+  color: rgb(201, 201, 201);
+}
+
+.fa-heart {
+  color: rgb(255, 29, 67);
+}
